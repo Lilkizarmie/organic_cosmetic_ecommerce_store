@@ -4,14 +4,15 @@ import datetime
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    
     class meta:
         verbose_name_plural='Categories'
     
+
     
 @staticmethod
 def get_all_categories():
         return Category.objects.all()
+  
   
 def __str__(self):
         return self.name
@@ -23,6 +24,8 @@ class Customer(models.Model):
     phone = models.CharField(max_length=10)
     email = models.EmailField()
     password = models.CharField(max_length=100)
+    class meta:
+        verbose_name_plural='Customers'
   
     # to save the data
     def register(self):
@@ -41,6 +44,9 @@ class Customer(models.Model):
   
         return False
     
+def __str__(self):
+        return self.name
+    
 
 
 class Products(models.Model):
@@ -50,6 +56,8 @@ class Products(models.Model):
     description = models.CharField(
         max_length=250, default='', blank=True, null=True)
     image = models.ImageField(upload_to='uploads/products/')
+    class meta:
+        verbose_name_plural='Products'
   
     @staticmethod
     def get_products_by_id(ids):
@@ -67,8 +75,9 @@ class Products(models.Model):
             return Products.get_all_products()
         
         
-        
-        
+def __str__(self):
+        return self.name
+    
 class Order(models.Model):
     product = models.ForeignKey(Products,
                                 on_delete=models.CASCADE)
@@ -80,6 +89,8 @@ class Order(models.Model):
     phone = models.CharField(max_length=50, default='', blank=True)
     date = models.DateField(default=datetime.datetime.today)
     status = models.BooleanField(default=False)
+    class meta:
+        verbose_name_plural='Orders'
   
     def placeOrder(self):
         self.save()
@@ -87,3 +98,7 @@ class Order(models.Model):
     @staticmethod
     def get_orders_by_customer(customer_id):
         return Order.objects.filter(customer=customer_id).order_by('-date')
+    
+def __str__(self):
+        return self.name
+    
