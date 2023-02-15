@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
-use Darryldecode\Cart\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
@@ -70,9 +69,7 @@ class CheckoutForm extends Component
 
             Auth::login($user);
 
-        }
-
-        elseif (!$userlogged && $userexist) {
+        } elseif (!$userlogged && $userexist) {
 
             $this->validate([
                 'email' => 'required|string|email|max:255',
@@ -87,9 +84,10 @@ class CheckoutForm extends Component
 
             if (!$login) {
                 // dd('Here');
-                session()->flash('failed', 'You already have an account, please input your correct password😞');
+                // session()->flash('failed', 'You already have an account, please input your correct password😞');
+                flash()->addError('You already have an account, please input your correct password😞');
             }
-        }else {
+        } else {
 
             $this->validate([
                 'name' => 'required',
@@ -120,7 +118,7 @@ class CheckoutForm extends Component
 
                     ],
                     "customizations" => [
-                        "title" => 'BuyBooks',
+                        "title" => 'CosmeStore',
                         "description" => "Pay for your course",
                     ],
                 ];
@@ -128,11 +126,12 @@ class CheckoutForm extends Component
                 // dd($data);
 
                 $payment = Flutterwave::initializePayment($data);
-
                 // dd($payment);
+                // dd($payment['status']);
                 if ($payment['status'] !== 'success') {
                     // notify something went wrong
-                    session()->flash('failed', 'Transaction Failed');
+                    // session()->flash('failed', 'Transaction Failed');
+                    flash()->addError('Transaction Failed 😞');
                     // return Redirect::to(Session::get('url'));
                     return redirect()->back();
                 }
@@ -142,7 +141,8 @@ class CheckoutForm extends Component
             }
 
         } else {
-            session()->flash('failed', 'Cart is Empty, Add a Product 😞');
+            // session()->flash('failed', 'Cart is Empty, Add a Product 😞');
+            flash()->addError('Cart is Empty, Add a Product 😞');
         }
 
     }

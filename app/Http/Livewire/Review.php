@@ -53,7 +53,8 @@ class Review extends Component
                 'approved' => true, // This is optional and defaults to false
             ], $user);
 
-            session()->flash('success', 'Rated Product Successfully 😃');
+            // session()->flash('success', 'Rated Product Successfully 😃');
+            flash()->addSuccess('Rated Product Successfully 😃');
             $this->reset('rating', 'title', 'body');
             $this->emit('addedReview');
 
@@ -82,14 +83,16 @@ class Review extends Component
                     'approved' => true, // This is optional and defaults to false
                 ], Auth::user());
 
-                session()->flash('success', 'Rated Product Successfully 😃');
+                // session()->flash('success', 'Rated Product Successfully 😃');
+                flash()->addSuccess('Rated Product Successfully 😃');
                 $this->reset('rating', 'title', 'body');
                 $this->emit('addedReview');
 
             } else {
-                session()->flash('failed', 'You already have an account, please input your correct password😞');
+                // session()->flash('failed', 'You already have an account, please input your correct password😞');
+                flash()->addError('You already have an account, please input your correct password😞');
             }
-        }else{
+        } else {
 
             $this->validate([
                 'rating' => 'required',
@@ -104,7 +107,8 @@ class Review extends Component
                 'approved' => true, // This is optional and defaults to false
             ], Auth::user());
 
-            session()->flash('success', 'Rated Product Successfully 😃');
+            // session()->flash('success', 'Rated Product Successfully 😃');
+            flash()->addSuccess('Rated Product Successfully 😃');
             $this->reset('rating', 'title', 'body');
             $this->emit('addedReview');
         }

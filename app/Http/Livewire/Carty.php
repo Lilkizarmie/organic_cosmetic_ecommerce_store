@@ -9,7 +9,7 @@ class Carty extends Component
 {
     public $cartId = 1;
 
-    protected $listeners = ['addedtoCart' =>'render'];
+    protected $listeners = ['addedtoCart' => 'render'];
 
     public function addItem(Product $product)
     {
@@ -17,10 +17,10 @@ class Carty extends Component
         $cart = \Cart::session(Auth()->id())->getContent();
         $cekItemId = $cart->whereIn('id', $product->id);
 
-
         if ($cekItemId->isNotEmpty()) {
             if ($product->stock == $cekItemId[$product->id]->quantity) {
-                session()->flash('error', 'The item stock is low 😞');
+                // session()->flash('error', 'The item stock is low 😞');
+                flash()->addError('The item stock is low 😞');
             } else {
                 \Cart::session(Auth()->id())->update($product->id, [
                     'quantity' => [
@@ -31,7 +31,8 @@ class Carty extends Component
             }
         } else {
             if ($product->stock == 0) {
-                session()->flash('error', 'This item stock is low 😞');
+                // session()->flash('error', 'This item stock is low 😞');
+                flash()->addError('The item stock is low 😞');
             } else {
                 \Cart::session(Auth()->id())->add([
                     'id' => $product->id,
@@ -40,12 +41,13 @@ class Carty extends Component
                     'quantity' => 1,
                     'attributes' => [
                         'added_at' => date("Y-m-d H:i:s"),
-                        'image'    => $product->image
+                        'image' => $product->image,
                     ],
                 ]);
             }
 
         }
+        flash()->addSuccess('Product Added to Cart Successfully 😎');
     }
 
     public function increaseItem($rowId)
@@ -58,10 +60,12 @@ class Carty extends Component
         $checkItem = $cart->whereIn('id', $rowId);
 
         if ($product->stock == $checkItem[$rowId]->quantity || $product->stock == 0) {
-            session()->flash('error', 'The item stock is low 😞');
+            // session()->flash('error', 'The item stock is low 😞');
+            flash()->addError('The item stock is low 😞');
         } else {
             if ($product->stock == 0) {
-                session()->flash('error', 'The item stock is low 😞');
+                // session()->flash('error', 'The item stock is low 😞');
+                flash()->addError('The item stock is low 😞');
             } else {
                 \Cart::session($cartId)->update($rowId, [
                     'quantity' => [
@@ -100,8 +104,6 @@ class Carty extends Component
         \Cart::session($this->cartId)->remove($rowId);
     }
 
-
-
     public function render()
     {
         $cartId = 1;
@@ -120,7 +122,7 @@ class Carty extends Component
                     'pricesingle' => $item->price,
                     'price' => $item->getPriceSum(),
                     'added_at' => $item->attributes->added_at,
-                    'image'    => $item->attributes->image
+                    'image' => $item->attributes->image,
                 ];
             }
 
@@ -135,7 +137,7 @@ class Carty extends Component
             'total' => $total,
         ];
 
-        return view('livewire.carty',[
+        return view('livewire.carty', [
             'carts' => $cartData,
             'summary' => $summary,
         ]);

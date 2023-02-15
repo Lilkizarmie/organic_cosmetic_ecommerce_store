@@ -16,7 +16,6 @@ class Grid extends Component
         $cart = \Cart::session($cartId)->getContent();
         $cekItemId = $cart->whereIn('id', $product->id);
 
-
         if ($cekItemId->isNotEmpty()) {
             if ($product->stock == $cekItemId[$product->id]->quantity) {
                 session()->flash('error', 'The item stock is low 😞');
@@ -39,13 +38,15 @@ class Grid extends Component
                     'quantity' => 1,
                     'attributes' => [
                         'added_at' => date("Y-m-d H:i:s"),
-                        'image'    => $product->image,
+                        'image' => $product->image,
                     ],
                 ]);
             }
 
         }
+
         $this->emit('addedtoCart');
+        flash()->addSuccess('Product Added to Cart Successfully 😎');
     }
 
     public function render()

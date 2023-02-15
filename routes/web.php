@@ -7,6 +7,7 @@ use App\Http\Livewire\Admin\Products;
 use App\Http\Livewire\Admin\Roles;
 use App\Http\Livewire\Admin\Users;
 use App\Http\Livewire\Checkout;
+use App\Http\Livewire\Home;
 use App\Http\Livewire\Success;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+// Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home');
 Route::get('/about-us', function () {
     return view('about-us');
 });

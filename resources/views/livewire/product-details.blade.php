@@ -5,12 +5,12 @@
         <div class="flex flex-wrap mx-auto lg:w-4/5">
             <img alt="ProductImage"
                 class="object-cover object-center w-full border border-gray-200 rounded h-1/2 lg:w-1/2"
-                src="{{ Storage::disk('s3')->url('photos/' . $product->image) }}">
+                src="{{ asset('products/' . $product->image) }}">
             <div class="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
                 {{-- <h2 class="text-sm tracking-widest text-gray-500 title-font">BRAND NAME</h2> --}}
-              
-                    <h1 class="mb-1 text-3xl font-medium text-gray-900 title-font">{{ $product->title }}</h1>
-                    <a href="#review">
+
+                <h1 class="mb-1 text-3xl font-medium text-gray-900 title-font">{{ $product->title }}</h1>
+                <a href="#review">
                     <div class="flex mb-4">
                         <span class="flex items-center">
                             @if ($product->averageRating()['0'] == 5)
@@ -95,7 +95,7 @@
         <div class="flex items-center pb-5 mt-6 mb-5 border-b-2 border-gray-200">
         </div>
         <div id="review" class="justify-center mx-auto my-3 lg:px-12">
-            <div class="flex justify-between py-5" x-data="{review:false}">
+            <div class="flex justify-between py-5" x-data="{ review: false }">
                 <h2 class="text-3xl font-bold "> Reviews</h2>
                 <button @click="review = true"
                     class="flex items-center px-3 py-2 font-medium text-white bg-gray-600 rounded-md lg:text-xl md:text-sm hover:bg-gray-500 focus:outline-none focus:bg-gray-500">

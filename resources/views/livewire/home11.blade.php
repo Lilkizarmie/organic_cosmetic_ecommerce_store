@@ -1,8 +1,6 @@
 <div>
     <div>
         @section('body')
-
-
             <!DOCTYPE html>
             <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -26,7 +24,6 @@
                     [x-cloak] {
                         display: none
                     }
-
                 </style>
 
                 <!-- Scripts -->
@@ -36,7 +33,7 @@
 
             <body>
                 <!-- component -->
-                <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
+                <div x-data="{ cartOpen: false, isOpen: false }" class="bg-white">
                     <header>
                         <div class="container px-6 py-3 mx-auto">
                             <div class="flex items-center justify-between">
@@ -53,14 +50,13 @@
                                     {{-- <span class="mx-1 text-sm">NY</span> --}}
                                 </div>
                                 <div class="w-full text-2xl font-semibold text-gray-700 md:text-center">
-                                    BuyBooks
+                                    CosmeStore
                                 </div>
                                 <div class="flex items-center justify-end w-full">
                                     <button @click="cartOpen = !cartOpen"
                                         class="mx-4 text-gray-600 focus:outline-none sm:mx-0">
-                                        <svg class="w-5 h-5" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                            stroke="currentColor">
+                                        <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                             <path
                                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                                             </path>
@@ -84,7 +80,8 @@
                                 <div class="flex flex-col sm:flex-row">
                                     <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Home</a>
                                     <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Shop</a>
-                                    <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Categories</a>
+                                    <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
+                                        href="#">Categories</a>
                                     <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contact</a>
                                     <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">About</a>
                                 </div>
@@ -215,7 +212,7 @@
 
                 @livewireScripts
                 <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-                                data-turbolinks-eval="false" data-turbo-eval="false"></script>
+                    data-turbolinks-eval="false" data-turbo-eval="false"></script>
             </body>
 
             </html>

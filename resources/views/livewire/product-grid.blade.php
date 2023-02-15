@@ -3,7 +3,7 @@
         <div class="container flex flex-wrap items-start ml-auto mr-auto">
             <div class="w-full pl-5 mt-4 mb-4 lg:pl-2">
                 <h1 class="text-3xl font-extrabold text-gray-700 lg:text-4xl">
-                    All Books
+                    All Products
                 </h1>
                 <div class="pb-7">
                     <div class="justify-end max-w-lg mx-auto mt-6">
@@ -29,7 +29,7 @@
                         class="p-2 transition duration-300 bg-white rounded-lg m-h-64 hover:translate-y-2 hover:shadow-xl">
                         <a href="{{ route('details', $product->slug) }}">
                             <figure class="mb-2">
-                                <img src="{{ Storage::disk('s3')->url('photos/' . $product->image) }}" alt=""
+                                <img src="{{ asset('products/' . $product->image) }}" alt=""
                                     class="h-64 ml-auto mr-auto" />
                             </figure>
                         </a>
@@ -51,10 +51,10 @@
 
                 </div>
             @empty
-            <div class="justify-center mx-auto text-center">
-                @include('sorry')
-                <h2 class="text-4xl font-bold text-gray-800"> Product not found </h2>
-            </div>
+                <div class="justify-center mx-auto text-center">
+                    @include('sorry')
+                    <h2 class="text-4xl font-bold text-gray-800"> Product not found </h2>
+                </div>
             @endforelse
 
         </div>

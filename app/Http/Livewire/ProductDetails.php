@@ -11,7 +11,7 @@ class ProductDetails extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['addedReview'=> 'render'];
+    protected $listeners = ['addedReview' => 'render'];
 
     public $product;
 
@@ -21,7 +21,6 @@ class ProductDetails extends Component
         // dd('working');
         $cart = \Cart::session($cartId)->getContent();
         $cekItemId = $cart->whereIn('id', $product->id);
-
 
         if ($cekItemId->isNotEmpty()) {
             if ($product->stock == $cekItemId[$product->id]->quantity) {
@@ -45,13 +44,14 @@ class ProductDetails extends Component
                     'quantity' => 1,
                     'attributes' => [
                         'added_at' => date("Y-m-d H:i:s"),
-                        'image'    => $product->image,
+                        'image' => $product->image,
                     ],
                 ]);
             }
 
         }
         $this->emit('addedtoCart');
+        flash()->addSuccess('Product Added to Cart Successfully 😎');
     }
 
     public function render()
