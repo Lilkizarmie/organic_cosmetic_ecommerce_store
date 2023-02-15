@@ -1,0 +1,112 @@
+<?php
+
+namespace App\Http\Livewire\Admin;
+
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+
+class Products extends Component
+{
+    use WithFileUploads;
+
+    protected $listeners = ['updatedProduct' => 'render'];
+
+    public $title;
+    public $price;
+    public $stock;
+    public $image;
+    public $category;
+    public $code;
+    public $description;
+
+    protected $rules = [
+        'title' => 'required',
+        'price' => 'required',
+        'stock' => 'required',
+        'category' => 'required',
+        'code' => 'required',
+
+    ];
+
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+
+    // }
+
+    public function addProduct()
+    {
+
+        $this->validate();
+
+        if ($this->image) {
+
+            $file = $this->image;
+
+            $imageName = $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $location = 'products/' . $imageName;
+            $img = Image::make($file);
+
+            $img->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->sharpen(6)->save($location);
+
+            $product = Product::create([
+                'title' => $this->title,
+                'price' => $this->price,
+                'stock' => $this->stock,
+                'code' => $this->code,
+                'slug' => Str::slug($this->title),
+                'description' => $this->description,
+                // 'category_id' => $this->category,
+                'image' => $imageName,
+                'sales' => 0,
+            ]);
+
+        } else {
+            $product = Product::create([
+                'title' => $this->title,
+                'price' => $this->price,
+                'stock' => $this->stock,
+                'code' => $this->code,
+                'slug' => Str::slug($this->title),
+                'description' => $this->description,
+                // 'category_id' => $this->category,
+                'sales' => 0,
+
+            ]);
+        }
+
+        $product->category()->attach($this->category);
+
+        $this->reset(['title', 'price', 'stock', 'image', 'category', 'code']);
+        session()->flash('success', 'Product Added Successfully 😃!');
+        $this->emit('addedProduct');
+        // $this->emitTo('AllStaffs', 'addedStaff');
+
+    }
+
+    public function delete(Product $product)
+    {
+
+        if ($product->image) {
+            Storage::delete('products/' . $product->image);
+        }
+        Product::destroy($product->id);
+        $this->dispatchBrowserEvent('product-deleted');
+        session()->flash('success', "Product deleted Successfully");
+    }
+
+    public function render()
+    {
+        $categories = Category::latest()->get();
+        $products = Product::latest()->get();
+        return view('livewire.admin.products', compact('products', 'categories'));
+    }
+}
