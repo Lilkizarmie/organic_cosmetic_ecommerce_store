@@ -35,7 +35,7 @@
   <meta name="twitter:description" content="Organic skincare product">
   <meta name="twitter:image" content="images/logo_01.png">
 
-  <meta property="og:url" content="index.html">
+  <meta property="og:url" content="">
   <meta property="og:title" content="CasieMata">
   <meta property="og:description" content="organic skincare product">
   <meta property="og:type" content="website">
@@ -64,21 +64,21 @@
                 <ul class="navbar-nav hover-menu main-menu px-0 mx-xl-n5">
                   <li aria-haspopup="true" aria-expanded="false"
                     class="nav-item dropdown-item-home dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                    <a class="nav-link p-0" href="index.html" data-toggle="dropdown">
+                    <a class="nav-link p-0"  href="{{ url('/') }}">
                       Home
                       <span class="caret"></span>
                     </a>
                   </li>
                   <li aria-haspopup="true" aria-expanded="false"
                     class="nav-item dropdown-item-shop dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                    <a class="nav-link p-0" href="store.html" data-toggle="dropdown">
+                    <a class="nav-link p-0" href="{{ url('/store') }}" >
                       Shop
                       <span class="caret"></span>
                     </a>
                   </li>
                   <li aria-haspopup="true" aria-expanded="false"
                     class="nav-item dropdown-item-pages dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                    <a class="nav-link p-0" href="about-us.html" data-toggle="dropdown">
+                    <a class="nav-link p-0" href="{{ url('/about-us') }}">
                       About
                       <span class="caret"></span>
                     </a>
@@ -87,9 +87,9 @@
               </div>
               <div class="mx-auto flex-shrink-0 position-static">
                 <div class="d-flex mt-3 mt-xl-0 align-items-center w-100 justify-content-center">
-                  <a class="navbar-brand mw-184px mx-4 mx-xxl-10 d-none d-xl-inline-block" href="index.html">
-                    <img src="images/logo-white-02.png" alt="CasieMata" class="normal-logo">
-                    <img src="images/logo-black-02.png" alt="CasieMata" class="sticky-logo">
+                  <a class="navbar-brand mw-184px mx-4 mx-xxl-10 d-none d-xl-inline-block" href="{{ url('/blog') }}">
+                    <img src="images/casiemata.png" alt="CasieMata" class="normal-logo">
+                    <img src="images/casiemata.png" alt="CasieMata" class="sticky-logo">
                   </a>
                 </div>
               </div>
@@ -97,29 +97,23 @@
                 <ul class="navbar-nav hover-menu main-menu px-0 mx-xl-n5">
                   <li aria-haspopup="true" aria-expanded="false"
                     class="nav-item dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                    <a class="nav-link p-0" href="blog.html" data-toggle="dropdown">
+                    <a class="nav-link p-0" href="{{ url('/blog') }}">
                       Blog
                       <span class="caret"></span>
                     </a>
                   </li>
                   <li aria-haspopup="true" aria-expanded="false"
                     class="nav-item dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                    <a class="nav-link p-0" href="contact-us.html" data-toggle="dropdown">
+                    <a class="nav-link p-0" href="{{ url('/contact-us') }}">
                       Contact
                       <span class="caret"></span>
                     </a>
                   </li>
                 </ul>
                 <ul class="navbar-nav flex-row justify-content-xl-end d-flex flex-wrap text-body py-0 navbar-right">
+                 
                   <li class="nav-item">
-                    <a class="nav-link pr-3 py-0" href="#" data-toggle="modal" data-target="#sign-in">
-                      <svg class="icon icon-user-light">
-                        <use xlink:href="#icon-user-light"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link position-relative px-4 py-0" href="wishlist.html">
+                    <a class="nav-link position-relative px-4 py-0" href="{{ url('/wishlist') }}">
                       <svg class="icon icon-star-light">
                         <use xlink:href="#icon-star-light"></use>
                       </svg>
@@ -144,9 +138,9 @@
               data-canvas-options='{"width":"250px","container":".sidenav"}'>
               <span class="fs-24 toggle-icon"></span>
             </button>
-            <div class="mx-auto"><a class="navbar-brand mw-184px d-inline-block mr-0 py-5" href="index.html">
-                <img src="images/logo-white-02.png" alt="CasieMata" class="normal-logo">
-                <img src="images/logo-black-02.png" alt="CasieMata" class="sticky-logo">
+            <div class="mx-auto"><a class="navbar-brand mw-184px d-inline-block mr-0 py-5" href="{{ url('/') }}">
+                <img src="images/casiemata.png" alt="CasieMata" class="normal-logo">
+                <img src="images/casiemata.png" alt="CasieMata" class="sticky-logo">
               </a></div>
             <a href="#search-popup" data-gtf-mfp="true"
               data-mfp-options='{"type":"inline","focus": "#keyword","mainClass": "mfp-search-form mfp-move-from-top mfp-align-top"}'
@@ -965,3 +959,238 @@
     </svg>
   
                             <!----------------------custom icon finish-------------------->
+
+
+                          <!----------------------sidebar cart start-------------------->
+
+  <div class="canvas-sidebar cart-canvas">
+    <div class="canvas-overlay">
+    </div>
+    <div class="card border-0 pt-4 pb-7 h-100">
+      <div class="px-6 text-right">
+        <span class="canvas-close d-inline-block fs-24 mb-1 ml-auto lh-1 text-primary"><i
+            class="fal fa-times"></i></span>
+      </div>
+      <div class="card-header bg-transparent p-0 mx-6">
+        <h3 class="fs-24 mb-5">
+          Shopping bag
+        </h3>
+        <p class="fs-15 font-weight-500 text-body mb-5"><span class="d-inline-block mr-2 fs-15 text-secondary"><i
+              class="far fa-check-circle"></i></span>
+          Your cart is saved for the next <span class="text-secondary">4m34s</span></p>
+      </div>
+      <div class="card-body px-6 pt-7 overflow-y-auto">
+        <div class="mb-4 d-flex">
+          <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
+          <div class="media w-100">
+            <div class="w-60px mr-3">
+              <img src="images/cart-01.jpg" alt="atural Coconut Cleansing Oil">
+            </div>
+            <div class="media-body d-flex">
+              <div class="cart-price pr-6">
+                <p class="fs-14 font-weight-bold text-secondary mb-1"><span
+                    class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
+                </p>
+                <a href="#" class="text-secondary">Natural Coconut Cleansing Oil</a>
+              </div>
+              <div class="position-relative ml-auto">
+                <div class="input-group">
+                  <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i class="far fa-minus"></i></a>
+                  <input type="number" class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
+                  <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i class="far fa-plus"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 d-flex">
+          <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
+          <div class="media w-100">
+            <div class="w-60px mr-3">
+              <img src="images/cart-02.jpg" alt="Super Pure">
+            </div>
+            <div class="media-body d-flex">
+              <div class="cart-price pr-6">
+                <p class="fs-14 font-weight-bold text-secondary mb-1"><span
+                    class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
+                </p>
+                <a href="#" class="text-secondary">Super Pure</a>
+              </div>
+              <div class="position-relative ml-auto">
+                <div class="input-group">
+                  <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i class="far fa-minus"></i></a>
+                  <input type="number" class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
+                  <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i class="far fa-plus"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 d-flex">
+          <a href="#" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
+          <div class="media w-100">
+            <div class="w-60px mr-3">
+              <img src="images/cart-03.jpg" alt="Cleansing Balm">
+            </div>
+            <div class="media-body d-flex">
+              <div class="cart-price pr-6">
+                <p class="fs-14 font-weight-bold text-secondary mb-1"><span
+                    class="font-weight-500 fs-13 text-line-through text-body mr-1">$39.00</span>$29.00
+                </p>
+                <a href="#" class="text-secondary">Cleansing Balm</a>
+              </div>
+              <div class="position-relative ml-auto">
+                <div class="input-group">
+                  <a href="#" class="down position-absolute pos-fixed-left-center pl-2"><i class="far fa-minus"></i></a>
+                  <input type="number" class="number-cart w-90px px-6 text-center h-40px bg-input border-0" value="1">
+                  <a href="#" class="up position-absolute pos-fixed-right-center pr-2"><i class="far fa-plus"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer mt-auto border-0 bg-transparent px-6 pb-0 pt-5">
+        <div class="d-flex align-items-center mb-2">
+          <span class="text-secondary fs-15">Total price:</span>
+          <span class="d-block ml-auto fs-24 font-weight-bold text-secondary">$106.00</span>
+        </div>
+        <a href="{{ url('/checkout') }}" class="btn btn-secondary btn-block mb-3 bg-hover-primary border-hover-primary">Check
+          Out</a>
+        <a href="{{ url('/cart') }}" class="btn btn-outline-secondary btn-block">View Cart</a>
+      </div>
+    </div>
+  </div>
+                         <!----------------------sidebar cart start-------------------->
+
+                        <!----------------------mobile menu start-------------------->
+
+  <div class="sidenav canvas-sidebar bg-white">
+    <div class="canvas-overlay">
+    </div>
+    <div class="pt-5 pb-7 card border-0 h-100">
+      <div class="d-flex align-items-center card-header border-0 py-0 pl-8 pr-7 mb-9 bg-transparent">
+        <a                
+        
+        
+        <!----------------------mobile menu start-------------------->
+
+  <div class="sidenav canvas-sidebar bg-white">
+    <div class="canvas-overlay">
+    </div>
+    <div class="pt-5 pb-7 card border-0 h-100">
+      <div class="d-flex align-items-center card-header border-0 py-0 pl-8 pr-7 mb-9 bg-transparent">
+        <a href="{{ url('/') }}" class="d-block mw-184px">
+          <img src="images/casiemata.png" alt="CasieMata">
+        </a>
+        <span class="canvas-close d-inline-block text-right fs-24 ml-auto lh-1 text-primary"><i
+            class="fal fa-times"></i></span>
+      </div>
+      <div class="overflow-y-auto pb-6 pl-8 pr-7 card-body pt-0">
+        <ul class="navbar-nav main-menu px-0 ">
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="{{ url('/') }}" >
+              Home
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="store.html">
+              Shop
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="about-us.html">
+              About
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="blog.html">
+              Blog
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="contact-us.html">
+              Contact
+              <span class="caret"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer bg-transparent border-0 mt-auto pl-8 pr-7 pb-0 pt-4">
+        <ul class="list-inline d-flex align-items-center mb-3">
+          <li class="list-inline-item mr-4"><a href="#" class="fs-20 lh-1"><i class="fab fa-pinterest-p"></i></a>
+          </li>
+          <li class="list-inline-item mr-4"><a href="#" class="fs-20 lh-1"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="list-inline-item mr-4"><a href="#" class="fs-20 lh-1"><i class="fab fa-instagram"></i></a></li>
+          <li class="list-inline-item"><a href="#" class="fs-20 lh-1"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+        <p class="mb-0 text-gray">
+          © 2022 CasieMata.<br>
+          All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+
+              <!-----------------------------Mobile Menu End---------------------------> 
+        <span class="canvas-close d-inline-block text-right fs-24 ml-auto lh-1 text-primary"><i
+            class="fal fa-times"></i></span>
+      </div>
+      <div class="overflow-y-auto pb-6 pl-8 pr-7 card-body pt-0">
+        <ul class="navbar-nav main-menu px-0 ">
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="{{ url('/') }}">
+              Home
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="{{ url('/store') }}">
+              Shop
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="{{ url('/about-us') }}">
+              About
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="{{ url('/blog') }}">
+              Blog
+              <span class="caret"></span>
+            </a>
+          </li>
+          <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+            <a class="nav-link p-0" href="{{ url('/contact-us') }}">
+              Contact
+              <span class="caret"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer bg-transparent border-0 mt-auto pl-8 pr-7 pb-0 pt-4">
+        <ul class="list-inline d-flex align-items-center mb-3">
+          <li class="list-inline-item mr-4"><a href="#" class="fs-20 lh-1"><i class="fab fa-pinterest-p"></i></a>
+          </li>
+          <li class="list-inline-item mr-4"><a href="#" class="fs-20 lh-1"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="list-inline-item mr-4"><a href="#" class="fs-20 lh-1"><i class="fab fa-instagram"></i></a></li>
+          <li class="list-inline-item"><a href="#" class="fs-20 lh-1"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+        <p class="mb-0 text-gray">
+          © 2022 CasieMata.<br>
+          All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+
+                        <!---------------------Mobile Menu End----------------------->
