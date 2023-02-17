@@ -2,18 +2,6 @@
 
 @section('main-container')
 <main id="content">
-  <section class="py-2 bg-gray-2">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
-          <li class="breadcrumb-item"><a class="text-decoration-none text-body" href="index.html">Home</a>
-          </li>
-          <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">Wishlist
-          </li>
-        </ol>
-      </nav>
-    </div>
-  </section>
   <section>
     <div class="container">
       <h2 class="text-center mt-9 mb-8">Wishlist</h2>

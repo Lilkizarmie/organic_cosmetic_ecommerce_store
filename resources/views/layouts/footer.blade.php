@@ -70,7 +70,8 @@
     </div>
   </div>
 </footer>
-                                <!----------------------footer start-------------------->
+                                
+ <!----------------------footer start-------------------->
 
 <script src="vendors/jquery.min.js"></script>
 <script src="vendors/jquery-ui/jquery-ui.min.js"></script>
