@@ -6,7 +6,9 @@ use App\Http\Livewire\Admin\Permissions;
 use App\Http\Livewire\Admin\Products;
 use App\Http\Livewire\Admin\Roles;
 use App\Http\Livewire\Admin\Users;
+use App\Http\Livewire\Checkout;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\ShoppingCart;
 use App\Http\Livewire\Store;
 use App\Http\Livewire\Success;
 use Illuminate\Support\Facades\Route;
@@ -25,41 +27,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', Home::class);
 Route::get('/', Home::class)->name('home');
 Route::get('/store', Store::class)->name('store');
-// Route::get('/about-us', function () {
-//     return view('about-us');
-// });
-
-// Route::get('/blog', function () {
-//     return view('blog');
-// });
-
-// Route::get('/cart', function () {
-//     return view('cart');
-// });
-
-// Route::get('/checkout', function () {
-//     return view('checkout');
-// });
-
-// Route::get('/contact-us', function () {
-//     return view('contact-us');
-// });
-
-// Route::get('/faq', function () {
-//     return view('faq');
-// });
-
-// Route::get('/store', function () {
-//     return view('store');
-// });
-
-// Route::get('/wishlist', function () {
-//     return view('wishlist');
-// });
-
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/cart', ShoppingCart::class)->name('cart');
 
 Route::get('/about-us', function () {
     return view('about-us');
@@ -67,14 +35,6 @@ Route::get('/about-us', function () {
 
 Route::get('/blog', function () {
     return view('blog');
-});
-
-Route::get('/cart', function () {
-    return view('cart');
-});
-
-Route::get('/checkout', function () {
-    return view('checkout');
 });
 
 Route::get('/contact-us', function () {
@@ -85,15 +45,11 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
-// Route::get('/store', function () {
-//     return view('store');
-// });
-
 Route::get('/wishlist', function () {
     return view('wishlist');
 });
 
-// Route::get('checkout', Checkout::class)->name('checkout');
+Route::get('checkout', Checkout::class)->name('checkout');
 Route::get('success', Success::class)->name('success');
 Route::get('product/{product:slug}', [ProductController::class, 'details'])->name('details');
 Route::get('/rave/callback', [App\Http\Controllers\FlutterwaveController::class, 'callback'])->name('callback');

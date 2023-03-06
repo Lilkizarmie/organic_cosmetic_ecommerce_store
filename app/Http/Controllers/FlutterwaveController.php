@@ -83,7 +83,8 @@ class FlutterwaveController extends Controller
         // $url = route('sales');
         \Cart::session($this->cartId)->clear();
         session()->flash('success', '<a href="/sales">The Sale has been completed, you can check the sale table</a>');
-        return redirect('success');
+        flash()->addSucces('Your order has been placed ');
+        // return redirect('success');
         // $this->customer = '';
         // dd("Successs");
 
@@ -94,13 +95,14 @@ class FlutterwaveController extends Controller
         elseif ($status ==  'cancelled'){
             //Put desired action/code after transaction has been cancelled here
             session()->flash('failed', 'Payment has been Cancelled');
-
+            flash()->addError('Payment was cancelled by you 😞');
             // return Redirect::to(Session::get('url'));
             return redirect()->back();
         }
         else{
             //Put desired action/code after transaction has failed here
             session()->flash('failed', 'Transaction Failed');
+            flash()->addError('Transaction Failed 😞');
 
             // return Redirect::to(Session::get('url'));
             return redirect()->back();

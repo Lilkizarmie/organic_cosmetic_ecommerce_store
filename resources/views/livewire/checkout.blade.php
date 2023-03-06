@@ -1,29 +1,70 @@
-@section('body')
-<main class="my-8">
-    <div class="container px-6 mx-auto">
-        <h3 class="text-2xl font-medium text-gray-700">Checkout</h3>
-        <div class="flex flex-col mt-2 lg:flex-row">
-            <div class="order-2 w-full lg:w-1/2">
-                {{-- <div class="flex items-center">
-                    <button class="flex text-sm text-blue-500 focus:outline-none"><span class="flex items-center justify-center w-5 h-5 mr-2 text-white bg-blue-500 rounded-full">1</span> Contacts</button>
-                    <button class="flex ml-8 text-sm text-gray-700 focus:outline-none"><span class="flex items-center justify-center w-5 h-5 mr-2 border-2 border-blue-500 rounded-full">2</span> Shipping</button>
-                    <button class="flex ml-8 text-sm text-gray-500 focus:outline-none" disabled><span class="flex items-center justify-center w-5 h-5 mr-2 border-2 border-gray-500 rounded-full">3</span> Payments</button>
-                </div> --}}
-                @livewire('checkout-form')
-            </div>
-            <div class="flex-shrink-0 order-1 w-full mb-8 lg:w-1/2 lg:mb-0 lg:order-2">
-                <div class="flex justify-center lg:justify-end">
-                    <div class="w-full max-w-md px-4 py-3 border rounded-md">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-medium text-gray-700">Order total </h3>
-                            {{-- <span class="text-sm text-gray-600">Edit</span> --}}
+<main id="content">
+    <section class="py-2 bg-gray-2">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+                    <li class="breadcrumb-item"><a class="text-decoration-none text-body" href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">Check Out</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <section class="pb-lg-13 pb-11">
+        <div class="container">
+            <h2 class="text-center my-9">Check Out</h2>
+            {{-- <form> --}}
+            <div class="row">
+                <div class="col-lg-4 pb-lg-0 pb-11 order-lg-last">
+                    <div class="card border-0" style="box-shadow: 0 0 10px 0 rgba(0,0,0,0.1)">
+                        <div class="card-header px-0 mx-6 bg-transparent py-5">
+                            <h4 class="fs-24 mb-5">Order Summary</h4>
+                            @forelse($carts as $index=>$cart)
+                                <div class="media w-100 mb-4">
+                                    <div class="w-60px mr-3">
+                                        <img src="{{ asset('products/' . $cart['image']) }}" alt="{{ $cart['name'] }}">
+                                    </div>
+                                    <div class="media-body d-flex">
+                                        <div class="cart-price pr-6">
+                                            <a href="#" class="text-secondary pr-6">{{ $cart['name'] }}<span
+                                                    class="text-body">
+                                                    x{{ $cart['qty'] }}</span></a>
+                                            {{-- <p class="fs-14 text-secondary mb-0 mt-1">Size:<span class="text-body">
+                                                Fullsize</span></p> --}}
+                                        </div>
+                                        <div class="ml-auto">
+                                            <p class="fs-14 text-secondary mb-0 font-weight-bold">
+                                                ₦{{ number_format($cart['pricesingle']) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <p>Cart is Empty</p>
+                            @endforelse
                         </div>
-                        @livewire('carty')
+                        <div class="card-body px-6 pt-5">
+                            <div class="d-flex align-items-center mb-2">
+                                <span>Subtotal:</span>
+                                <span class="d-block ml-auto text-secondary font-weight-bold">₦
+                                    {{ number_format($summary['total']) }}</span>
+                            </div>
+                            {{-- <div class="d-flex align-items-center">
+                                <span>Shipping:</span>
+                                <span class="d-block ml-auto text-secondary font-weight-bold">$0</span>
+                            </div> --}}
+                        </div>
+                        <div class="card-footer bg-transparent px-0 pb-1 mx-6">
+                            <div class="d-flex align-items-center font-weight-bold mb-3">
+                                <span class="text-secondary">Total price:</span>
+                                <span class="d-block ml-auto text-secondary fs-24 font-weight-bold">₦
+                                    {{ number_format($summary['total']) }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                @livewire('checkout-form')
             </div>
+            {{-- </form> --}}
         </div>
-    </div>
+    </section>
 </main>
-
-@endsection

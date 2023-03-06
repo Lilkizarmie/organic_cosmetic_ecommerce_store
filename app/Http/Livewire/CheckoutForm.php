@@ -39,6 +39,7 @@ class CheckoutForm extends Component
 
     public function buy()
     {
+        // dd('Working');
         $cartId = 1;
         $total = \Cart::session($cartId)->getTotal();
         // $totall = number_format($totali);
