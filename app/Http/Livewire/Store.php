@@ -4,10 +4,13 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithPagination;
 
-class Home extends Component
+class Store extends Component
 {
-    protected $listeners = ['addedtoCart' => 'render'];
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
 
     public function addItem(Product $product)
     {
@@ -53,9 +56,10 @@ class Home extends Component
 
     public function render()
     {
-        $products = Product::latest()->get();
-        return view('livewire.home', compact('products'))
+        $products = Product::latest()->paginate(10);
+        return view('livewire.store', compact('products'))
             ->extends('layouts.main')
             ->section('main-container');
+        // return view('livewire.store');
     }
 }
