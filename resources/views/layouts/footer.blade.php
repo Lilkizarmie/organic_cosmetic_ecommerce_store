@@ -44,7 +44,7 @@
         </div>
         <div class="row mt-0 mt-lg-15 align-items-center">
             <div class="col-12 col-md-6 col-lg-4 d-flex align-items-center order-2 order-lg-1 mt-4 mt-md-7 mt-lg-0">
-                <p class="mb-0">© CasieMata 2022</p>
+                <p class="mb-0">© CasieMata 2023</p>
                 <ul class="list-inline fs-18 ml-3 mb-0">
                     <li class="list-inline-item mr-4">
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-12 col-lg-4 text-md-center order-1 order-lg-2">
                 <div class="mw-184px mx-md-auto text-md-center">
-                    <img src="images/logo-black-02.png" alt="CasieMata">
+                    <img src="images/casiemata.png" alt="CasieMata">
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 text-md-right order-3 mt-4 mt-md-7 mt-lg-0">
@@ -71,6 +71,7 @@
         </div>
     </div>
 </footer>
+
 <!----------------------footer start-------------------->
 
 <script src="vendors/jquery.min.js"></script>
