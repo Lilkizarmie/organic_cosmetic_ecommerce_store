@@ -49,6 +49,10 @@ Route::get('/wishlist', function () {
     return view('wishlist');
 });
 
+Route::get('/product-details', function (){
+    return view('product-details');
+});
+
 Route::get('checkout', Checkout::class)->name('checkout');
 Route::get('success', Success::class)->name('success');
 Route::get('product/{product:slug}', [ProductController::class, 'details'])->name('details');
